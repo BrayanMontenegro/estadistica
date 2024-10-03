@@ -21,9 +21,9 @@ export default function Formulario({setBandera}) {
     try {
       const docRef = await addDoc(collection(db, "personas"), {
         nombre: nombre,
-        edad: parseInt(edad),
+        edad: edad,
         genero: genero,
-        salario: parseFloat(salario)
+        salario: salario
       });
       console.log("Documento agregado con ID: ", docRef.id);
     } catch (e) {
