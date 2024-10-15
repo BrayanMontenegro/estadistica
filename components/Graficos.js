@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
-import GraficoSalarios from './components/GraficoSalarios';
-import GraficoGeneros from './components/GraficoGeneros';
-import Formulario from './components/Formulario';
-import GraficoReporteEnfermedades from './components/GraficoReporteEnfermedades';
-import GraficoBezier from './components/GraficoBezier';
+import GraficoSalarios from './GraficoSalarios';
+import GraficoGeneros from './GraficoGeneros';
+import Formulario from './Formulario';
+import GraficoReporteEnfermedades from './GraficoReporteEnfermedades';
+import GraficoBezier from './GraficoBezier';
 import { collection, getDocs, query } from 'firebase/firestore';
 
 //Importación de conexión a firebase
-import db from './Firebaseconfig';
+import db from '../Firebaseconfig';
 
 
 export default function Graficos() {
