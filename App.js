@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, View, ScrollView } from 'react-native';
 import GraficoSalarios from './components/GraficoSalarios';
 import GraficoGeneros from './components/GraficoGeneros';
+import GraficoProgreso from './components/GraficoProgreso';
 import Formulario from './components/Formulario';
 import GraficoReporteEnfermedades from './components/GraficoReporteEnfermedades';
 import GraficoBezier from './components/GraficoBezier';
@@ -12,6 +13,11 @@ import db from './Firebaseconfig';
 
 
 export default function Graficos() {
+
+  const [dataProgreso, setDataProgreso] = useState({
+    labels: [''],
+    data: [0]
+  });
 
   const [bandera, setBandera] = useState(false); // Variable bandera
   const [dataSalarios, setDataSalarios] = useState({
@@ -116,6 +122,15 @@ export default function Graficos() {
           }
         ];
 
+        totalPersonas = masculino + femenino;
+
+        const progresos = [masculino/totalPersonas, femenino/totalPersonas]
+
+        setDataProgreso({
+          labels: ['Hombres', 'Mujeres'],
+          data: progresos
+        });
+
         setDataGeneros(totalData);
         console.log(totalData);
       } catch (error) {
@@ -133,6 +148,10 @@ export default function Graficos() {
         <GraficoSalarios dataSalarios={dataSalarios}/>
         <GraficoBezier dataSalarios={dataSalarios}/>
         <GraficoGeneros dataGeneros={dataGeneros}/>
+        <GraficoProgreso 
+          dataProgreso={dataProgreso}
+          colors={['rgba(131, 167, 234, 0.5)', 'rgba(255, 105, 180, 0.5)']}   
+        />
         <GraficoReporteEnfermedades dataReporteEnfermedades={dataReporteEnfermedades}/>
       </ScrollView>
 
