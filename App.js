@@ -144,7 +144,7 @@ export default function Graficos() {
   return (
     <View style={styles.container} >
       <ScrollView contentContainerStyle={styles.scrollView}>
-        {/* <Formulario setBandera={setBandera}/> */}
+        <Formulario setBandera={setBandera}/>
         <GraficoSalarios dataSalarios={dataSalarios}/>
         <GraficoBezier dataSalarios={dataSalarios}/>
         <GraficoGeneros dataGeneros={dataGeneros}/>
